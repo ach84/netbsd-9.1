@@ -1,12 +1,12 @@
 #!/bin/bash
 
-BUILD=./arch/evbarm/compile/PINE64
-REL=1
+BUILD=./sys/arch/evbarm/compile/PINE64
+REL=2
 
 case $1 in
   conf)
 	[ -d ./log ] || mkdir ./log
-	pushd ./arch/evbarm/conf
+	pushd ./sys/arch/evbarm/conf
 	config PINE64
 	popd
 	;;
