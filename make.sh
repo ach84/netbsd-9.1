@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BUILD=./arch/evbarm/compile/PINE64
+REL=1
 
 case $1 in
   conf)
@@ -20,12 +21,14 @@ case $1 in
 	LOG=${PWD}/log/$( date +%Y%m%d%H%M%S ).bin.log
 	touch $LOG
 	pushd $BUILD
+	echo $REL > ./version
+	rm -f vers.c vers.o
 	time make -j4 | tee $LOG
 	popd
 	;;
   clean)
 	pushd $BUILD
-	make clean
+	make distclean
 	popd
 	;;
   stat)

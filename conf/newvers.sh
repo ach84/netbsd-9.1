@@ -206,7 +206,7 @@ if ${Rflag}; then
 else
 	if [ -z "${timestamp}" ]; then
 		v=$(cat version)
-		t=$(LC_ALL=C date)
+		t=$(LC_ALL=C date '+%Y-%m-%d %T' )
 		u=${USER-root}
 		h=$(hostname)
 		d=$(pwd)
@@ -219,7 +219,7 @@ else
 		h=mkrepro.NetBSD.org
 		d="/usr/src/sys/arch/${machine}/compile/${id}"
 	fi
-	reproversion=" #${v}: ${t}\n\t${u}@${h}:${d}"
+	reproversion=" #${v}: ${t} ${u}@${h}"
 fi
 
 cwd=$(dirname "$0")
@@ -234,7 +234,7 @@ fullversion="${ost} ${osr} (${id})${reproversion}\n"
 # Convert multi-line strings to C source code.
 # Also add an extra blank line to copyright.
 #
-copyright_source="$(printf "%s\n\n" "${copyright}" | source_lines)"
+copyright_source="$(printf "%s\n" "${copyright}" | source_lines)"
 fullversion_source="$(printf "%b" "${fullversion}" | source_lines)"
 buildinfo_source="$(printf "%b" "${BUILDINFO}" | source_lines)"
 
