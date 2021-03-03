@@ -148,7 +148,6 @@ makeoptions	COPY_SYMTAB=1
 
 config		netbsd		root on ? type ?
 
-options 	COMPAT_NETBSD32
 options 	EXEC_ELF32
 
 # EFI runtime support

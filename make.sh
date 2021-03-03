@@ -38,6 +38,9 @@ case $1 in
   install)
 	install -m0755 ${BUILD}/netbsd /netbsd
 	;;
+  restore)
+	install -m0755 /netbsd.9.99.77 /netbsd
+	;;
   *)
 	echo "usage: $0 [conf|dep|bin|clean|stat|install]"
 	;;
