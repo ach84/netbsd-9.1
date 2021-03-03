@@ -11,10 +11,11 @@ case $1 in
 	popd
 	;;
   dep)
+	DIR=${PWD}
 	LOG=${PWD}/log/$( date +%Y%m%d%H%M%S ).dep.log
 	touch $LOG
 	pushd $BUILD
-	time make -j4 depend | tee $LOG
+	time make -j4 depend NETBSDSRCDIR=$DIR | tee $LOG
 	popd
 	;;
   bin)
