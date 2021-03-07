@@ -32,8 +32,7 @@ case $1 in
 	make distclean
 	popd
 	;;
-  stat)
-	file ${BUILD}/netbsd /netbsd
+  check)
 	shasum ${BUILD}/netbsd /netbsd
 	;;
   install)
